@@ -34,6 +34,7 @@ export default class IRCClient {
     this.ws.send(`PASS oauth:${this.token}`);
     this.ws.send(`NICK ${this.username}`);
     this.ws.send('CAP REQ :twitch.tv/tags twitch.tv/commands twitch.tv/membership');
+    this.processor.emit('connected');
   }
   private onClose(event: WebSocket.CloseEvent) {
     console.log('disconnected', event.reason, event.code);

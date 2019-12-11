@@ -1,5 +1,5 @@
-import IRCClient from './IRC/IRCClient';
+import TwitchClient from './Client/TwitchClient';
 
 export default {
-  IRCClient: IRCClient
+  TwitchClient: TwitchClient
 };

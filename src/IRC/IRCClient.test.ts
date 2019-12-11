@@ -15,6 +15,7 @@ const mockParse = parse as jest.Mocked<any>;
 const mockWsSend = jest.fn();
 const mockOn = jest.fn();
 const mockProcess = jest.fn();
+const mockEmit = jest.fn();
 let mockWsInstance;
 let mockProcessorInstance;
 
@@ -30,7 +31,8 @@ describe('The IRC Client', () => {
 
     mockProcessorInstance = {
       on: mockOn,
-      process: mockProcess
+      process: mockProcess,
+      emit: mockEmit
     };
 
     mockWs.mockImplementation(() => {
@@ -85,7 +87,7 @@ describe('The IRC Client', () => {
       expect(mockWsSend).toHaveBeenNthCalledWith(1, 'PASS oauth:' + randomToken);
       expect(mockWsSend).toHaveBeenNthCalledWith(2, 'NICK ' + randomUsername);
       expect(mockWsSend).toHaveBeenNthCalledWith(3, 'CAP REQ :twitch.tv/tags twitch.tv/commands twitch.tv/membership');
-
+      expect(mockEmit).toHaveBeenCalledWith('connected');
     });
 
     test('it sets up th on close', () => {
