@@ -338,4 +338,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/intellij,node,windows,linux,osx,eclipse,netbeans,visualcode
-/yarn.lock
