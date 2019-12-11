@@ -13,7 +13,7 @@
     "clean:all": "yarn clean && rm -rf node_modules",
     "ci": "yarn check:types && yarn lint && yarn test:coverage && yarn build && yarn cpd",
     "cpd": "jscpd --ignore '**/*.test.*' src",
-    "lint": "eslint --ext ts,js src webpack.config.babel.js",
+    "lint": "eslint --ext ts src",
     "lint:fix": "yarn lint --fix",
     "report": "open ./reports/coverage/lcov-report/index.html",
     "test": "jest --verbose",

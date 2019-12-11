@@ -29,7 +29,7 @@ export default class IRCClient {
     this.processor.on(event.toLowerCase(), callback);
   }
 
-  private onOpen(event: WebSocket.OpenEvent): void {
+  private onOpen(): void {
     console.log('connected');
     this.ws.send(`PASS oauth:${this.token}`);
     this.ws.send(`NICK ${this.username}`);
