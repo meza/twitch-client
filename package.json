@@ -65,7 +65,7 @@
       "**/?(*.)test.ts?(x)"
     ],
     "collectCoverageFrom": [
-      "**/*.ts"
+      "src/**/*.ts"
     ],
     "reporters": [
       "default"

@@ -25,6 +25,11 @@ export default class IRCClient {
     });
   }
 
+  public send(rawMessage: string) {
+    const msg = rawMessage.trim();
+    this.ws.send(`${msg}\r\n`);
+  }
+
   public on(event: string, callback: (message: IRCMessage, ws: WebSocket) => void) {
     this.processor.on(event.toLowerCase(), callback);
   }

@@ -157,4 +157,15 @@ describe('The IRC Client', () => {
       expect(mockOn).toHaveBeenCalledWith('hello', callback);
     });
   });
+  describe('when sending messages', () => {
+    test('it adds the trailing line breaks', () => {
+      const ircClient = new IRCClient(randomUsername, randomToken);
+      const randomMessage = chance.sentence();
+
+      ircClient.send(randomMessage);
+
+      expect(mockWsInstance.send).toHaveBeenCalledWith(randomMessage + '\r\n');
+
+    });
+  });
 });

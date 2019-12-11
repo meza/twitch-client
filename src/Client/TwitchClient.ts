@@ -1,6 +1,7 @@
 import IRCClient from '../IRC/IRCClient';
 import { TwitchClientOptions } from './types';
 import TwitchEventProcessor from './TwitchEventProcessor';
+import TwitchChannel from './TwitchChannel';
 
 export default class TwitchClient {
   private readonly user: string;
@@ -18,6 +19,23 @@ export default class TwitchClient {
 
     this.eventProcessor.on('connected', this.onConnected.bind(this));
     this.ircClient.on('connected', this.onIRCConnected.bind(this));
+
+  }
+
+  public connectToChat(channelName: string) {
+    const channel = new TwitchChannel(channelName, this);
+
+    this.ircClient.send(`JOIN ${channel}`);
+  }
+
+  public say(channelName: string | TwitchChannel, message: string) {
+    let channel = channelName;
+
+    if (typeof channelName === 'string') {
+      channel = new TwitchChannel(channelName, this);
+    }
+
+    this.ircClient.send(`PRIVMSG ${channel} ${message}`);
   }
 
   private onIRCConnected() {
