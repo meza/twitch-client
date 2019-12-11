@@ -118,7 +118,7 @@ describe('The Twitch Client', () => {
       });
     });
 
-    describe('when passing in a channel objest as the channel name', () => {
+    describe('when passing in a channel object as the channel name', () => {
       test('it forwards the correct arguments to the IRC Client', () => {
         const randomChannelName = chance.word();
         const randomMessage = chance.sentence();
@@ -127,6 +127,34 @@ describe('The Twitch Client', () => {
         twitchClient.say(new TwitchChannel(randomChannelName, twitchClient), randomMessage);
 
         expect(mockIRCSend).toHaveBeenCalledWith('PRIVMSG ' + randomChannelName + ' ' + randomMessage);
+      });
+    });
+    
+    describe('when encountering a command', () => {
+      test('it passes it through to the correct handler', (done) => {
+        const twitchClient = new TwitchClient(randomUser, randomToken);
+        twitchClient.onCommand('boo', done);
+        
+        expect(mockOn).toHaveBeenCalledWith('command', expect.any(Function));
+        expect(mockOn.mock.calls[1][0]).toEqual('command');
+        
+        const actualHandler = mockOn.mock.calls[1][1];
+        actualHandler('boo');
+      });
+      
+      describe('and we are not listening to such command', () => {
+        test('it does nothing', () => {
+          const twitchClient = new TwitchClient(randomUser, randomToken);
+          twitchClient.onCommand('dummy', () => {
+            expect('This should not have been called').toEqual('');
+          });
+  
+          expect(mockOn).toHaveBeenCalledWith('command', expect.any(Function));
+          expect(mockOn.mock.calls[1][0]).toEqual('command');
+  
+          const actualHandler = mockOn.mock.calls[1][1];
+          actualHandler('boo');
+        });
       });
     });
   });

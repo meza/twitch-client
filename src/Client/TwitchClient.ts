@@ -22,6 +22,15 @@ export default class TwitchClient {
 
   }
 
+  public onCommand(commandName: string, callback: () => void) {
+
+    this.eventProcessor.on('command', (incomingCommand: string) => {
+      if (commandName.toLowerCase() === incomingCommand.toLowerCase()) {
+        callback();
+      }
+    });
+  }
+
   public connectToChat(channelName: string) {
     const channel = new TwitchChannel(channelName, this);
 
