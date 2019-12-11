@@ -1,0 +1,74 @@
+{
+  "name": "twitch-client",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "repository": "git@github.com:meza/twitch-client.git",
+  "author": "meza <meza@meza.hu>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "check:types": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "clean:all": "yarn clean && rm -rf node_modules",
+    "ci": "yarn check:types && yarn lint && yarn test:coverage && yarn build && yarn cpd",
+    "cpd": "jscpd --ignore '**/*.test.*' src",
+    "lint": "eslint --ext ts,js src webpack.config.babel.js",
+    "lint:fix": "yarn lint --fix",
+    "report": "open ./reports/coverage/lcov-report/index.html",
+    "test": "jest --verbose",
+    "test:coverage": "yarn test --coverage"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/ws": "^6.0.4",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "core-js": "^3.4.8",
+    "eslint": "^6.7.2",
+    "eslint-config-tailored-tunes": "^3.0.0",
+    "eslint-plugin-jest": "^23.1.1",
+    "jest": "^24.9.0",
+    "jest-chance": "^0.1.8",
+    "jscpd": "^2.0.16",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3",
+    "yarn": "^1.21.0"
+  },
+  "dependencies": {
+    "isomorphic-ws": "^4.0.1",
+    "ws": "^7.2.0"
+  },
+  "jest": {
+    "timers": "fake",
+    "globalSetup": "jest-chance",
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "d.ts"
+    ],
+    "coverageDirectory": "./reports/coverage",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testMatch": [
+      "**/?(*.)test.ts?(x)"
+    ],
+    "collectCoverageFrom": [
+      "**/*.ts"
+    ],
+    "reporters": [
+      "default"
+    ]
+  }
+}

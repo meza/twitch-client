@@ -1,0 +1,58 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "tailored-tunes"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "@typescript-eslint/interface-name-prefix": 0,
+    "sort-keys": 0,
+    "object-curly-spacing": ["error", "always"],
+    "sort-imports": 0,
+    "max-nested-callbacks": 0,
+    "prefer-arrow-callback": 0,
+    "no-constant-condition": ["error"],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "@typescript-eslint/indent": 0,
+    "comma-dangle": 2,
+    "no-console": "warn",
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-double"],
+    "max-len": ["error", { "code": 200 }],
+    "no-irregular-whitespace": ["error"],
+    "no-ternary": "off",
+    "no-nested-ternary": "error",
+    "multiline-ternary": ["error", "never"],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-inferrable-types": 2,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-non-null-assertion": 2,
+    "@typescript-eslint/no-use-before-define": 2,
+    "@typescript-eslint/array-type": 2,
+    "@typescript-eslint/explicit-member-accessibility": 2,
+    "@typescript-eslint/no-empty-interface": 2,
+    "no-prototype-builtins": 0,
+    "object-shorthand":  ["error", "never"]
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "jest": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "jest"
+  ]
+}
