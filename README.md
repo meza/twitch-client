@@ -14,3 +14,24 @@ paired with vigorous TDD, it should be a safe option for the perfectionists
 out there.
 
 If you find something that you would like to contribute with, please do so!
+
+
+## Local development quickstart:
+
+- Install Yarn https://yarnpkg.com/lang/en/docs/instal
+- have Node (10+)
+- check out the code
+- run `yarn` in the project root
+
+## Other commands
+- `yarn test`: to run tests
+- `yarn test:coverage`: to run the coverage
+
+## Playing with the library
+
+### Another typescript project
+Use it in another project by either directly importing src/index.ts
+
+### A non typescript project
+1. run `yarn build`
+2. import `dist/index.js` from your js project
