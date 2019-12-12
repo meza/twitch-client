@@ -3,6 +3,7 @@ on:
   push:
     tags:
       - v*
+      - pre-*
 jobs:
   main:
     runs-on: ubuntu-latest
