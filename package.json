@@ -1,10 +1,11 @@
 {
   "name": "@meza/twitch-client",
-  "version": "0.0.3-test-1",
+  "version": "0.0.3-test-2",
   "main": "dist/index.js",
   "files": [
     "src/**/*",
-    "!src/**/*.test.ts"
+    "!src/**/*.test.ts",
+    "!src/testing.ts"
   ],
   "typings": "dist/index.d.ts",
   "types": "dist/index.d.ts",
@@ -32,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "core-js": "^3.4.8",
+    "dotenv-defaults": "^1.0.2",
     "eslint": "^6.7.2",
     "eslint-config-tailored-tunes": "^3.0.0",
     "eslint-plugin-jest": "^23.1.1",
@@ -72,7 +74,8 @@
       "**/?(*.)test.ts?(x)"
     ],
     "collectCoverageFrom": [
-      "src/**/*.ts"
+      "src/**/*.ts",
+      "!src/testing.ts"
     ],
     "reporters": [
       "default"

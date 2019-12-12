@@ -1,7 +1,7 @@
 name: Publish@next
 on:
   push:
-    brranches:
+    branches:
       - master-next
 jobs:
   main:

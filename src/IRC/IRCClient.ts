@@ -26,8 +26,9 @@ export default class IRCClient {
   }
 
   public send(rawMessage: string) {
-    const msg = rawMessage.trim();
-    this.ws.send(`${msg}\r\n`);
+    const msg = rawMessage.trim() + '\r\n';
+    console.log(`ABOUT TO SEND: ${msg}`);
+    this.ws.send(msg);
   }
 
   public on(event: string, callback: (message: IRCMessage, ws: WebSocket) => void) {

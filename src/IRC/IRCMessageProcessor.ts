@@ -10,7 +10,7 @@ export default class IRCMessageProcessor extends EventEmitter {
   }
 
   public process(message: IRCMessage) {
-    console.log(`emitting: ${message.command.toLowerCase()}`);
-    this.emit(message.command.toLowerCase(), message, this.ws);
+    console.log(`emitting: ${message.command.toLowerCase().trim()}`);
+    this.emit(message.command.toLowerCase().trim(), message, this.ws);
   }
 }

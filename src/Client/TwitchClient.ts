@@ -2,6 +2,8 @@ import IRCClient from '../IRC/IRCClient';
 import { TwitchClientOptions } from './types';
 import TwitchEventProcessor from './TwitchEventProcessor';
 import TwitchChannel from './TwitchChannel';
+import { setUpHandlers } from './IRCHandlers';
+import TwitchUser from './TwitchUser';
 
 export default class TwitchClient {
   private readonly user: string;
@@ -19,14 +21,21 @@ export default class TwitchClient {
 
     this.eventProcessor.on('connected', this.onConnected.bind(this));
     this.ircClient.on('connected', this.onIRCConnected.bind(this));
-
+    setUpHandlers(this, this.ircClient, this.eventProcessor, this.options);
   }
-
-  public onCommand(commandName: string, callback: () => void) {
-
-    this.eventProcessor.on('command', (incomingCommand: string) => {
+  public onCommand(commandName: string, callback: (
+    channel: TwitchChannel,
+    user: TwitchUser,
+    messageParts: string[]
+  ) => void) {
+    this.eventProcessor.on('command', (
+      incomingCommand: string,
+      channel: TwitchChannel,
+      user: TwitchUser,
+      messageParts: string[]
+    ) => {
       if (commandName.toLowerCase() === incomingCommand.toLowerCase()) {
-        callback();
+        callback(channel, user, messageParts);
       }
     });
   }
@@ -44,7 +53,7 @@ export default class TwitchClient {
       channel = new TwitchChannel(channelName, this);
     }
 
-    this.ircClient.send(`PRIVMSG ${channel} ${message}`);
+    this.ircClient.send(`PRIVMSG ${channel} :${message}`);
   }
 
   private onIRCConnected() {

@@ -114,7 +114,7 @@ describe('The Twitch Client', () => {
 
         twitchClient.say(randomChannelName, randomMessage);
 
-        expect(mockIRCSend).toHaveBeenCalledWith('PRIVMSG ' + randomChannelName + ' ' + randomMessage);
+        expect(mockIRCSend).toHaveBeenCalledWith('PRIVMSG ' + randomChannelName + ' :' + randomMessage);
       });
     });
 
@@ -126,7 +126,7 @@ describe('The Twitch Client', () => {
 
         twitchClient.say(new TwitchChannel(randomChannelName, twitchClient), randomMessage);
 
-        expect(mockIRCSend).toHaveBeenCalledWith('PRIVMSG ' + randomChannelName + ' ' + randomMessage);
+        expect(mockIRCSend).toHaveBeenCalledWith('PRIVMSG ' + randomChannelName + ' :' + randomMessage);
       });
     });
 
