@@ -1,7 +1,8 @@
 {
   "name": "twitch-client",
   "version": "0.0.1",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:meza/twitch-client.git",
   "author": "meza <meza@meza.hu>",
   "license": "MIT",
@@ -15,6 +16,7 @@
     "cpd": "jscpd --ignore '**/*.test.*' src",
     "lint": "eslint --ext ts src",
     "lint:fix": "yarn lint --fix",
+    "prepublish": "yarn build",
     "report": "open ./reports/coverage/lcov-report/index.html",
     "test": "jest --verbose",
     "test:coverage": "yarn test --coverage"
