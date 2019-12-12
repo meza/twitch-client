@@ -22,6 +22,8 @@ jobs:
       - name: Install dependencies
         if: steps.server-cache.outputs.cache-hit != 'true'
         run: yarn install --pure-lockfile
+      - name: write npmrc
+        run: echo "//registry.yarnpkg.com/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" >>~/.npmrc
       - name: yarn publish
         run: yarn publish --tag next
         env:
