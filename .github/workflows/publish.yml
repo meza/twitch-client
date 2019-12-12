@@ -13,6 +13,16 @@ jobs:
           node-version: 13
           registry-url: https://npm.pkg.github.com
           scope: '@meza'
+      - uses: actions/cache@v1
+        id: server-cache
+        with:
+          path: server/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        if: steps.server-cache.outputs.cache-hit != 'true'
+        run: yarn install --pure-lockfile
       - name: yarn publish
         run: yarn publish
         env:
