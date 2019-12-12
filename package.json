@@ -1,8 +1,8 @@
 {
   "name": "@meza/twitch-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "repository": "git@github.com:meza/twitch-client.git",
   "author": "meza <meza@meza.hu>",
   "license": "MIT",
