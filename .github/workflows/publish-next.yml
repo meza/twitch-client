@@ -1,0 +1,28 @@
+name: Publish
+on:
+  push:
+    brranches:
+      - master
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 13
+          scope: '@meza'
+      - uses: actions/cache@v1
+        id: server-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install dependencies
+        if: steps.server-cache.outputs.cache-hit != 'true'
+        run: yarn install --pure-lockfile
+      - name: yarn publish
+        run: yarn publish --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
