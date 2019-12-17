@@ -1,5 +1,3 @@
 import TwitchClient from './Client/TwitchClient';
 
-export default {
-  TwitchClient: TwitchClient
-};
+export default TwitchClient;
