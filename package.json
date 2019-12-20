@@ -1,6 +1,6 @@
 {
   "name": "@meza/twitch-client",
-  "version": "0.0.3-test-3",
+  "version": "0.0.3-test-4",
   "main": "dist/index.js",
   "files": [
     "src/**/*",

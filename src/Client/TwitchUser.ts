@@ -16,8 +16,15 @@ export default class TwitchUser {
   }
 
   public static from(tags: IRCMessageTags) {
-    const isMod = (tags.mod === '1');
-    const isSub = (tags.subscriber === '1');
+    let isMod = (tags.mod === '1');
+    let isSub = (tags.subscriber === '1');
+
+    if (tags.badges) {
+      if (tags.badges.indexOf('broadcaster/1') > -1) {
+        isMod = true;
+        isSub = true;
+      }
+    }
 
     return new TwitchUser(tags['display-name'], isSub, isMod);
   }
