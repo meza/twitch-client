@@ -43,7 +43,7 @@
     "ts-jest": "^24.2.0",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3",
-    "yarn": "^1.21.0"
+    "yarn": "^1.22.0"
   },
   "dependencies": {
     "isomorphic-ws": "^4.0.1",
