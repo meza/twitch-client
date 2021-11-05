@@ -28,26 +28,26 @@
     "test:coverage": "yarn test --coverage"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/ws": "^6.0.4",
-    "@typescript-eslint/eslint-plugin": "^2.10.0",
-    "@typescript-eslint/parser": "^2.10.0",
-    "core-js": "^3.4.8",
-    "dotenv-defaults": "^1.0.2",
-    "eslint": "^6.7.2",
-    "eslint-config-tailored-tunes": "^3.0.0",
-    "eslint-plugin-jest": "^23.1.1",
-    "jest": "^24.9.0",
-    "jest-chance": "^0.1.8",
-    "jscpd": "^2.0.16",
-    "ts-jest": "^24.2.0",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.3",
-    "yarn": "^1.21.0"
+    "@types/jest": "^27.0.2",
+    "@types/ws": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "core-js": "^3.19.1",
+    "dotenv-defaults": "^3.0.0",
+    "eslint": "^8.1.0",
+    "eslint-config-tailored-tunes": "^5.0.2",
+    "eslint-plugin-jest": "^25.2.3",
+    "jest": "^27.3.1",
+    "jest-chance": "^0.1.11",
+    "jscpd": "^3.3.26",
+    "ts-jest": "^27.0.7",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4",
+    "yarn": "^1.22.17"
   },
   "dependencies": {
     "isomorphic-ws": "^4.0.1",
-    "ws": "^7.2.0"
+    "ws": "^8.2.3"
   },
   "jest": {
     "timers": "fake",
